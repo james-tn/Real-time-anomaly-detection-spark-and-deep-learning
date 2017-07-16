@@ -1,0 +1,12 @@
+1. Setup Spark for MAC
+For Mac
+
+https://medium.com/@josemarcialportilla/installing-scala-and-apache-spark-on-mac-os-837ae57d283f
+
+Setup Spark for windows
+
+https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c
+2. Configure pyspark to run spark from jupyter notebook 
+(Assume you already have jupyter notebook installed on local machine)
+
+conda install -c conda-forge findspark=1.1.0
