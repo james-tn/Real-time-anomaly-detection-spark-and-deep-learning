@@ -6,7 +6,39 @@ https://medium.com/@josemarcialportilla/installing-scala-and-apache-spark-on-mac
 Setup Spark for windows
 
 https://medium.com/@GalarnykMichael/install-spark-on-windows-pyspark-4498a5d8d66c
+
+
 2. Configure pyspark to run spark from jupyter notebook 
 (Assume you already have jupyter notebook installed on local machine)
 
 conda install -c conda-forge findspark=1.1.0
+
+
+3. Set up Bokeh 
+
+See http://bokeh.pydata.org/en/latest/docs/installation.html
+
+3.a. Check dependencies with "pip freeze" command
+* if you have anaconda, should already the dependencies installed
+
+3.b. if you are in Windows, open the Anaconda Prompt as Administrator and run command "conda install bokeh"
+* if in Mac, might be able to run "pip install bokeh" command
+
+3.c. after install, you can check using the "pip freeze" command again
+
+
+4. Bokeh quick start
+
+See http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html
+for streaming example, see https://www.youtube.com/watch?v=NUrhOj3DzYs
+
+4.a. set up for streaming example
+* create a folder, folder name will be your app name
+* put some sort of data csv in there, e.g. "Specific QC Lot Number Results.csv"
+* create the main.py (or use the example from our repo)
+
+4.b. start up your local bokeh server
+* from the folder where you have your main.py, run command "bokeh serve ."
+
+4.c. connect to your local bokeh server
+* http://localhost:5006/<your_folder_name>
