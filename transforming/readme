@@ -1,5 +1,6 @@
-data can be transformed to tables by these .py files
+1. data can be transformed to tables by these .py files
+2. run "transform_data.py" will execute all other .py files
 
-One problem: the last row in .py files: 
+3. One major problem: the last row in .py files: 
   results.rdd.saveAsTextFile('hdfs:///user/w205/final/xbarm.txt')
 cannot output regular .txt files with data. Please help me to figure it out.
