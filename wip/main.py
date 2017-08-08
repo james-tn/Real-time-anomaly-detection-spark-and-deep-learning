@@ -9,26 +9,25 @@ from bokeh.models import Span
 
 from tensorflow.python.framework import random_seed
 
-import findspark
-findspark.init()
+#import findspark
+#findspark.init()
 import pyspark
 from pyspark.sql.functions import *
 
-
+from pyspark import SparkContext
+sc = SparkContext()
 
 from pyspark.sql import SparkSession
 
-spark = SparkSession \
-    .builder \
-    .appName("W205 Final") \
-    .config("spark.some.config.option", "some-value") \
-    .getOrCreate()
+spark = SparkSession.builder.appName("W205 Final").config("spark.some.config.option", "some-value").getOrCreate()
 
-qc_raw = spark.read.csv('data/Sysmex/Data/Specific QC Lot Number Results.csv', header =False)
+data_path = 'C:/Temp/w205finalprojdata/'
+
+qc_raw = spark.read.csv(data_path + 'Specific QC Lot Number Results.csv', header =False)
 qc_raw = qc_raw.select(col("_c0").alias("Prod_ID"), col("_c1").alias("QC_Lot"), col("_c2").alias("QC_Time"),col("_c3").alias("W-X"), col("_c4").alias("W-Y"),col("_c5").alias("W-Z") )
 qc_raw.write.saveAsTable("QC_Raw")
 
-machine_raw = spark.read.csv('data/Sysmex/Data/Reference Set A Result Set.csv')
+machine_raw = spark.read.csv(data_path + 'Reference Set A Result Set.csv')
 machine_raw = machine_raw.select(col("_c0").alias("Prod_ID"), col("_c1").alias("Ser_No"), col("_c2").alias("Model_ID"),col("_c3").alias("IPU_Ver"), col("_c4").alias("Upgrade_Date") )
 machine_raw.write.saveAsTable("Machine_Raw")
 
@@ -59,7 +58,7 @@ queue =[]
 sess = tf.Session()
 new_saver = tf.train.import_meta_graph('sysmex_anomaly_model1.meta')
 
-new_saver.restore(sess,tf.train.latest_checkpoint('./'))
+#new_saver.restore(sess,tf.train.latest_checkpoint('./'))
 
 # Now, let's access and create placeholders variables and
 # create feed-dict to feed new data
