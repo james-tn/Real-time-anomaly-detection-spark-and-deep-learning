@@ -3,12 +3,12 @@ See
 * https://www.reddit.com/r/IPython/comments/3jn4ub/is_it_possible_to_deploy_multiple_jupyter/
     
 
-Person  | Start Jupyter Server Command                                                    | Connect to Jupyter Notebook url
---------|---------------------------------------------------------------------------------|----------------------------------------------------------
-James	| jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config.py'    | https://ec2-54-204-252-120.compute-1.amazonaws.com:8888/
-Weixing | jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config_01.py' | https://ec2-54-204-252-120.compute-1.amazonaws.com:8887/
-Anna    | jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config_02.py' | https://ec2-54-204-252-120.compute-1.amazonaws.com:8886/
-Yang    | jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config_03.py' | https://ec2-54-204-252-120.compute-1.amazonaws.com:8885/
+Person  | Start Jupyter Server Command                                                  | Connect to Jupyter Notebook url
+--------|-------------------------------------------------------------------------------|----------------------------------------------------------
+James	| jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config.py    | https://ec2-54-204-252-120.compute-1.amazonaws.com:8888/
+Weixing | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_01.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8887/
+Anna    | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_02.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8886/
+Yang    | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_03.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8885/
 
 
 Step 0
