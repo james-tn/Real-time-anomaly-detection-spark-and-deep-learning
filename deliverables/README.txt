@@ -28,11 +28,32 @@ EC2 Instance file structure
         Reference Set A Result Set.csv
         Test Flagging Query Data Set.csv
     Notebooks
-        
+        w205final_v1.0.ipynb
         main.py
+        sysmex_anomaly_model1.index
+        sysmex_anomaly_model1.meta
 
 
-
+        
+=====================================================
+Project Github file structure
+=====================================================
+https://github.com/james-tn/w205final
+    /deliverables
+        README.txt
+        w205_section04_final_project_james_weixing_annalaissa_yang.pdf
+        w205_section04_final_project_james_weixing_annalaissa_yang.pptx
+        w205final_v1.0.ipynb
+        main.py
+        qc_over_time.html
+        wx_select.html
+        wx_wy.html
+        QC_plots_Weixing.png
+    /reference
+        
+        
+        
+        
 =====================================================
 How to run the pieces of the project
 =====================================================
