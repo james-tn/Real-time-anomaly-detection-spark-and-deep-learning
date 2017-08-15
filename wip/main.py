@@ -9,8 +9,6 @@ from bokeh.models import Span
 
 from tensorflow.python.framework import random_seed
 
-import findspark
-findspark.init()
 import pyspark
 from pyspark.sql.functions import *
 
@@ -18,26 +16,18 @@ from pyspark.sql.functions import *
 
 from pyspark.sql import SparkSession
 
+
 spark = SparkSession \
     .builder \
-    .appName("W205 Final") \
-    .config("spark.some.config.option", "some-value") \
+    .appName("W205 Final bokeh") \
+    .config("spark.driver.memory", "10g") \
+    .enableHiveSupport() \
     .getOrCreate()
 
-qc_raw = spark.read.csv('data/Sysmex/Data/Specific QC Lot Number Results.csv', header =False)
-qc_raw = qc_raw.select(col("_c0").alias("Prod_ID"), col("_c1").alias("QC_Lot"), col("_c2").alias("QC_Time"),col("_c3").alias("W-X"), col("_c4").alias("W-Y"),col("_c5").alias("W-Z") )
-qc_raw.write.saveAsTable("QC_Raw")
 
-machine_raw = spark.read.csv('data/Sysmex/Data/Reference Set A Result Set.csv')
-machine_raw = machine_raw.select(col("_c0").alias("Prod_ID"), col("_c1").alias("Ser_No"), col("_c2").alias("Model_ID"),col("_c3").alias("IPU_Ver"), col("_c4").alias("Upgrade_Date") )
-machine_raw.write.saveAsTable("Machine_Raw")
+qc_sql = spark.sql("select * from qc_data")
 
 
-qc_sql = spark.sql("select QC_Raw.*, X.IPU_Ver, X.Model_ID, X.Ser_No from QC_Raw left join (select A.Prod_ID, A.Ser_No, A.Model_ID, A.IPU_Ver, UNIX_TIMESTAMP(A.Upgrade_Date, 'MM/dd/yy hh:mm aa') Start_Date, case when B.Upgrade_Date !='None' THEN  unix_timestamp(B.Upgrade_Date, 'MM/dd/yy hh:mm aa') \
-                        ELSE UNIX_TIMESTAMP('12/31/17 12:00 PM','MM/dd/yy hh:mm aa') END End_Date, B.IPU_Ver end_IPU from (Select *, rank()  over(partition by Prod_ID order by unix_timestamp(Upgrade_Date, 'MM/dd/yy hh:mm aa') \
-                        ) rank from Machine_Raw) A left join (Select *, rank()  over(partition by Prod_ID order by unix_timestamp(Upgrade_Date, 'MM/dd/yy hh:mm aa') ) \
-                        rank from Machine_Raw) B on A.Prod_ID = B.Prod_ID  and (A.rank = B.rank-1)) X on QC_Raw.Prod_ID = X.Prod_ID \
-                        and UNIX_TIMESTAMP(QC_Raw.QC_Time, 'yyyy-MM-dd hh:mm:ss')>=X.Start_Date and UNIX_TIMESTAMP(QC_Raw.QC_Time, 'yyyy-MM-dd hh:mm:ss')<X.End_Date")
 
 
 qc_data =qc_sql.toPandas()
