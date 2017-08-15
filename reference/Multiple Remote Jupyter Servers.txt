@@ -1,0 +1,31 @@
+See 
+* https://chrisalbon.com/jupyter/run_project_jupyter_on_amazon_ec2.html
+* https://www.reddit.com/r/IPython/comments/3jn4ub/is_it_possible_to_deploy_multiple_jupyter/
+    
+
+Person  | Start Jupyter Server Command                                                  | Connect to Jupyter Notebook url
+--------|-------------------------------------------------------------------------------|----------------------------------------------------------
+James	| jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config.py    | https://ec2-54-204-252-120.compute-1.amazonaws.com:8888/
+Weixing | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_01.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8887/
+Anna    | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_02.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8886/
+Yang    | jupyter notebook --config=/home/ubuntu/.jupyter/jupyter_notebook_config_03.py | https://ec2-54-204-252-120.compute-1.amazonaws.com:8885/
+
+
+Step 0
+Connect to the shared EC2 instance, e.g.
+$ ssh -i groupkey.pem ubuntu@ec2-54-204-252-120.compute-1.amazonaws.com
+
+
+Step 1
+Start up your jupyter server
+
+$ jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config_01.py'
+[I 01:15:59.691 NotebookApp] Serving notebooks from local directory: /home/ubuntu/Notebooks
+[I 01:15:59.692 NotebookApp] 0 active kernels
+[I 01:15:59.692 NotebookApp] The Jupyter Notebook is running at: https://[all ip addresses on your system]:8888/
+…
+
+
+Step 2
+In browser connect to the appropriate port
+https://ec2-54-204-252-120.compute-1.amazonaws.com:yourport/
