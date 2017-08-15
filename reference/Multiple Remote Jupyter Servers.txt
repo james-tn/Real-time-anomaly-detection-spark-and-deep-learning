@@ -29,3 +29,7 @@ $ jupyter notebook --config='/home/ubuntu/.jupyter/jupyter_notebook_config_01.py
 Step 2
 In browser connect to the appropriate port
 https://ec2-54-204-252-120.compute-1.amazonaws.com:yourport/
+
+If security error message, click Advanced, then take me there anyway
+
+If asked for notebook password, use Password01
