@@ -48,6 +48,7 @@ https://github.com/james-tn/w205final
         qc_over_time.html
         wx_select.html
         wx_wy.html
+        qc_data_dashboard.twb
         QC_plots_Weixing.png
     /reference
         
